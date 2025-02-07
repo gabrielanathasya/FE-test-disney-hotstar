@@ -1,13 +1,11 @@
-"use client";
-
-import { useHome } from "./hooks/useHome";
-
-export const Home = () => {
-  const { data } = useHome();
-
-  console.log({ data });
-
-  return <>home</>;
+import styles from "./home.module.css";
+import { Movie } from "@/data/models/movies";
+type Props = {
+  movies: Movie[];
 };
 
-export default Home;
+export default function Home({ movies }: Props) {
+  console.log({ movies });
+
+  return <>home</>;
+}
