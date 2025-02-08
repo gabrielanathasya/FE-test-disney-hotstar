@@ -1,0 +1,26 @@
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.result {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  row-gap: 24px;
+}
+
+.resultItem {
+  z-index: 5;
+  height: 232px;
+  width: 174px;
+  aspect-ratio: 2/3;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.poster {
+  object-fit: cover;
+}

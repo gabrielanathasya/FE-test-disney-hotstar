@@ -1,0 +1,39 @@
+.container {
+  display: grid;
+  gap: 32px;
+  padding: 32px 32px 32px 110px;
+  max-width: 100%;
+}
+
+.searchbar {
+  z-index: 5;
+  border-radius: 8px;
+  width: 100%;
+  background-color: #252833;
+  padding: 16px 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.searchbarInput {
+  width: 100%;
+  font-size: 1.125rem;
+  font-weight: 600;
+  background: transparent;
+  border: 0;
+}
+
+.searchbarInput::placeholder {
+  opacity: 0.8;
+}
+
+.searchbarInput:focus {
+  border: 0;
+  outline: 0;
+}
+
+.closeButton {
+  margin: -16px 0 -16px 0;
+  cursor: pointer;
+}

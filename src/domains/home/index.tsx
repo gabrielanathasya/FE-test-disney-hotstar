@@ -1,13 +1,14 @@
 "use client";
 
-import styles from "./Home.module.css";
+import styles from "./home.module.css";
 import { Movie } from "@/data/models/movies";
 import { useState } from "react";
 import Image from "next/image";
 import { languages } from "@/data/consts/languages";
 import { genres } from "@/data/consts/genres";
-import { RiAddFill, RiPlayFill, RiCheckFill } from "react-icons/ri";
 import { useWatchlist } from "@/hooks/useWatchlist";
+import WatchNowButton from "@/components/watch-now-button";
+import WatchlistButton from "@/components/watchlist-button";
 
 type Props = {
   movies: Movie[];
@@ -60,30 +61,21 @@ export default function Home({ movies }: Props) {
           <div className={`${styles.subInfo} ${styles.genres}`}>
             {selectedMovie.genre_ids?.map((genre: number, i: number) => {
               return (
-                <>
+                <span key={genre} className={styles.subInfo}>
                   <p>{genres[genre as keyof typeof genres]}</p>
                   {i !== selectedMovie.genre_ids.length - 1 && (
                     <span className={styles.separator}>&#124;</span>
                   )}
-                </>
+                </span>
               );
             })}
           </div>
           <div className={styles.buttonWrapper}>
-            <button className={`${styles.buttonWatchNow} ${styles.button}`}>
-              <RiPlayFill size={24} />
-              <p>Watch Now</p>
-            </button>
-            <button
-              onClick={handleClickWatchlist}
-              className={`${styles.buttonWatchList} ${styles.button}`}
-            >
-              {isCurrentSelectedMovieInWatchList ? (
-                <RiCheckFill size={28} />
-              ) : (
-                <RiAddFill size={28} />
-              )}
-            </button>
+            <WatchNowButton />
+            <WatchlistButton
+              handleClickWatchlist={handleClickWatchlist}
+              isInWatchlist={isCurrentSelectedMovieInWatchList}
+            />
           </div>
         </div>
       </div>

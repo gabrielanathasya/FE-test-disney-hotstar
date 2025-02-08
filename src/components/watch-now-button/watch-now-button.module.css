@@ -1,0 +1,25 @@
+.button {
+  border: 0;
+  cursor: pointer;
+  background-color: rgba(128, 128, 128, 0.6);
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+  border-radius: 8px;
+}
+
+.button:hover {
+  background-color: rgba(128, 128, 128, 0.9);
+  transform: scale(1.03, 1.03);
+  transition: all 0.3s ease;
+}
+
+.buttonWatchNow {
+  width: 100%;
+  padding: 12px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}

@@ -1,0 +1,61 @@
+.container {
+  position: absolute;
+  width: 400px;
+  gap: 24px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerBg {
+  width: 800px;
+  background: rgb(15, 16, 20);
+  background: linear-gradient(
+    to right,
+    rgb(15, 16, 20) 0%,
+    rgba(15, 16, 20, 0.98) 5%,
+    rgba(15, 16, 20, 0.95) 10%,
+    rgba(15, 16, 20, 0.9) 15%,
+    rgba(15, 16, 20, 0.85) 20%,
+    rgba(15, 16, 20, 0.8) 25%,
+    rgba(15, 16, 20, 0.75) 30%,
+    rgba(15, 16, 20, 0.7) 35%,
+    rgba(15, 16, 20, 0.65) 40%,
+    rgba(15, 16, 20, 0.6) 45%,
+    rgba(15, 16, 20, 0.55) 50%,
+    rgba(15, 16, 20, 0.45) 60%,
+    rgba(15, 16, 20, 0.35) 70%,
+    rgba(15, 16, 20, 0.25) 80%,
+    rgba(15, 16, 20, 0.15) 90%,
+    rgba(15, 16, 20, 0.05) 95%,
+    rgba(15, 16, 20, 0) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateX(-800px);
+  transition: all 0.3s ease;
+}
+
+.expandedContainerBg {
+  z-index: 10;
+  transform: translateX(0);
+}
+
+.iconContainer {
+  position: absolute;
+  display: grid;
+  row-gap: 40px;
+  z-index: 11;
+  left: 30px;
+}
+
+.logo {
+  top: 24px;
+  left: 24px;
+  position: absolute;
+  z-index: 11;
+}

@@ -1,12 +1,13 @@
 "use client";
 
-import styles from "./Sidebar.module.css";
+import styles from "./sidebar.module.css";
 import Image from "next/image";
 import { RiHomeLine, RiHomeFill, RiRssFill } from "react-icons/ri";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
 import { RiMovieAiLine, RiMovieAiFill } from "react-icons/ri";
 import { useState } from "react";
 import MenuItem from "./components/menu-item";
+import { routes } from "@/data/consts/routes";
 
 export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -26,7 +27,7 @@ export default function Sidebar() {
           alt="disney plus hotstar logo"
         />
       </div>
-      <div
+      <nav
         className={styles.iconContainer}
         onMouseEnter={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
@@ -36,23 +37,23 @@ export default function Sidebar() {
           iconFilled={<RiSearchFill size={24} />}
           iconOutlined={<RiSearchLine size={24} />}
           text="Search"
-          route="/"
+          route={routes.search}
         />
         <MenuItem
           isExpanded={isExpanded}
           iconFilled={<RiHomeFill size={24} />}
           iconOutlined={<RiHomeLine size={24} />}
           text="Home"
-          route="/"
+          route={routes.home}
         />
         <MenuItem
           isExpanded={isExpanded}
           iconFilled={<RiMovieAiFill size={24} />}
           iconOutlined={<RiMovieAiLine size={24} />}
           text="Watchlist"
-          route="/"
+          route={routes.watchlist}
         />
-      </div>
+      </nav>
     </div>
   );
 }
