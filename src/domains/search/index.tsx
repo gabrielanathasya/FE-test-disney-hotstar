@@ -2,7 +2,7 @@
 
 import styles from "./search.module.css";
 import { Movie } from "@/data/models/movies";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { RiSearchLine, RiCloseLine } from "react-icons/ri";
 import { TvShow } from "@/data/models/series";
 import EmptySearch from "./components/empty-search";
