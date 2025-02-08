@@ -1,5 +1,5 @@
 import { ReactNode, useState } from "react";
-import styles from "./menu.module.css";
+import styles from "./Menu.module.css";
 
 type Props = {
   isExpanded: boolean;

@@ -1,4 +1,4 @@
-export interface TvShow {
+export type TvShow = {
   id: number;
   name: string;
   original_name: string;
@@ -8,4 +8,4 @@ export interface TvShow {
   first_air_date: string;
   vote_average: number;
   media_type?: string;
-}
+};

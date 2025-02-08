@@ -1,12 +1,13 @@
 "use client";
 
-import styles from "./home.module.css";
+import styles from "./Home.module.css";
 import { Movie } from "@/data/models/movies";
 import { useState } from "react";
 import Image from "next/image";
 import { languages } from "@/data/consts/languages";
 import { genres } from "@/data/consts/genres";
-import { RiAddFill, RiPlayFill } from "react-icons/ri";
+import { RiAddFill, RiPlayFill, RiCheckFill } from "react-icons/ri";
+import { useWatchlist } from "@/hooks/useWatchlist";
 
 type Props = {
   movies: Movie[];
@@ -14,12 +15,24 @@ type Props = {
 
 export default function Home({ movies }: Props) {
   const [selectedMovie, setSelectedMovie] = useState<Movie>(movies[0]);
+  const { isInWatchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
+
+  const isCurrentSelectedMovieInWatchList = isInWatchlist(selectedMovie.id);
   console.log({ movies });
+
+  const handleClickWatchlist = () => {
+    if (isCurrentSelectedMovieInWatchList) {
+      removeFromWatchlist(selectedMovie.id);
+    } else {
+      addToWatchlist(selectedMovie);
+    }
+  };
 
   return (
     <div>
       <div className={styles.topSection}>
         <span className={styles.gradient} />
+        <span className={styles.gradientBottom} />
         <div className={styles.backdropContainer}>
           <Image
             src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${selectedMovie.backdrop_path}`}
@@ -61,8 +74,15 @@ export default function Home({ movies }: Props) {
               <RiPlayFill size={24} />
               <p>Watch Now</p>
             </button>
-            <button className={`${styles.buttonWatchList} ${styles.button}`}>
-              <RiAddFill size={24} />
+            <button
+              onClick={handleClickWatchlist}
+              className={`${styles.buttonWatchList} ${styles.button}`}
+            >
+              {isCurrentSelectedMovieInWatchList ? (
+                <RiCheckFill size={28} />
+              ) : (
+                <RiAddFill size={28} />
+              )}
             </button>
           </div>
         </div>

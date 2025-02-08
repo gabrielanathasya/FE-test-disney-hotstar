@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "./sidebar.module.css";
+import styles from "./Sidebar.module.css";
 import Image from "next/image";
 import { RiHomeLine, RiHomeFill, RiRssFill } from "react-icons/ri";
 import { RiSearchLine, RiSearchFill } from "react-icons/ri";
