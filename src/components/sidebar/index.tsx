@@ -2,9 +2,9 @@
 
 import styles from "./sidebar.module.css";
 import Image from "next/image";
-import { MdHome, MdOutlineHome } from "react-icons/md";
-import { MdSearch, MdOutlineSearch } from "react-icons/md";
-import { MdMovie, MdOutlineMovie } from "react-icons/md";
+import { RiHomeLine, RiHomeFill, RiRssFill } from "react-icons/ri";
+import { RiSearchLine, RiSearchFill } from "react-icons/ri";
+import { RiMovieAiLine, RiMovieAiFill } from "react-icons/ri";
 import { useState } from "react";
 import MenuItem from "./components/menu-item";
 
@@ -12,11 +12,7 @@ export default function Sidebar() {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <div
-      className={styles.container}
-      onMouseEnter={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
-    >
+    <div className={styles.container}>
       <span
         className={`${isExpanded ? styles.expandedContainerBg : ""} ${
           styles.containerBg
@@ -30,25 +26,29 @@ export default function Sidebar() {
           alt="disney plus hotstar logo"
         />
       </div>
-      <div className={styles.iconContainer}>
+      <div
+        className={styles.iconContainer}
+        onMouseEnter={() => setIsExpanded(true)}
+        onMouseLeave={() => setIsExpanded(false)}
+      >
         <MenuItem
           isExpanded={isExpanded}
-          iconFilled={<MdSearch size={30} />}
-          iconOutlined={<MdOutlineSearch size={30} />}
+          iconFilled={<RiSearchFill size={24} />}
+          iconOutlined={<RiSearchLine size={24} />}
           text="Search"
           route="/"
         />
         <MenuItem
           isExpanded={isExpanded}
-          iconFilled={<MdHome size={30} />}
-          iconOutlined={<MdOutlineHome size={30} />}
+          iconFilled={<RiHomeFill size={24} />}
+          iconOutlined={<RiHomeLine size={24} />}
           text="Home"
           route="/"
         />
         <MenuItem
           isExpanded={isExpanded}
-          iconFilled={<MdMovie size={30} />}
-          iconOutlined={<MdOutlineMovie size={30} />}
+          iconFilled={<RiMovieAiFill size={24} />}
+          iconOutlined={<RiMovieAiLine size={24} />}
           text="Watchlist"
           route="/"
         />
