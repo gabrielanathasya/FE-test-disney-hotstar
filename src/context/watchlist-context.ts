@@ -1,7 +1,7 @@
 "use client";
 
+import { Watchlist } from "@/types/watchlist";
 import { createContext } from "react";
-import { Watchlist } from "@/data/models/watchlist";
 import { Dispatch, SetStateAction } from "react";
 
 export interface WatchlistContextType {

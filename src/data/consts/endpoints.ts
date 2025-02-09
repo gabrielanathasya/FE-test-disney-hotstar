@@ -7,11 +7,11 @@ export const endpoints = {
     detail: "/movie",
   },
   series: {
-    airingToday: "tv/airing_today",
-    onTheAir: "tv/on_the_air",
-    popular: "tv/popular",
-    topRated: "tv/top_rated",
-    detail: "tv",
+    airingToday: "/tv/airing_today",
+    onTheAir: "/tv/on_the_air",
+    popular: "/tv/popular",
+    topRated: "/tv/top_rated",
+    detail: "/tv",
   },
   discover: {
     netflixOriginals: "/discover/tv?with_networks=213",

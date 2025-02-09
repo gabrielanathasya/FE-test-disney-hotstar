@@ -1,5 +1,6 @@
-import { endpoints } from "@/data/consts/endpoints";
-import { tmdbService } from "@/data/services/tmdb-service";
+import { MovieService } from "@/data/services/movie-service";
+import { TrendingService } from "@/data/services/trending-service";
+import { TvShowService } from "@/data/services/tv-show-service";
 import Search from "@/domains/search";
 
 type Props = {
@@ -8,21 +9,22 @@ type Props = {
 
 export default async function SearchPage({ searchParams }: Props) {
   const { query } = searchParams;
-  let movies = [];
-  let tvShow = [];
-  let trending = [];
+  let movies;
+  let tvShow;
+  let trending;
 
   if (query) {
-    movies = await tmdbService(`${endpoints.search.movie}?query=${query}`);
-    tvShow = await tmdbService(`${endpoints.search.tv}?query=${query}`);
+    movies = await MovieService.getInstance().search({ query });
+    tvShow = await TvShowService.getInstance().search({ query });
   } else {
-    trending = await tmdbService(endpoints.trending);
+    trending = await TrendingService.getInstance().getAll();
   }
+
   return (
     <Search
-      movies={movies.results?.slice(0, 8)}
-      tvShow={tvShow.results?.slice(0, 8)}
-      trending={trending.results?.slice(0, 8)}
+      movies={movies?.results?.slice(0, 8) ?? []}
+      tvShow={tvShow?.results?.slice(0, 8) ?? []}
+      trending={trending?.results?.slice(0, 8) ?? []}
     />
   );
 }

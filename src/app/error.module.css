@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0 20px;
+}
+
+.content {
+  text-align: center;
+  max-width: 600px;
+  gap: 14px;
+}
+
+.title {
+  font-size: 2rem;
+  margin: 0;
+  color: white;
+  line-height: 1;
+}
+
+.description {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #718096;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.button {
+  opacity: 0.7;
+  background-color: #252833;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  opacity: 1;
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+}

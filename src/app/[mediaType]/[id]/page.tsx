@@ -1,7 +1,9 @@
-import { endpoints } from "@/data/consts/endpoints";
-import { MediaType } from "@/data/models/common";
-import { tmdbService } from "@/data/services/tmdb-service";
+import { MediaTypeEnum } from "@/data/enums/media-type";
+import { MovieService } from "@/data/services/movie-service";
+import { TvShowService } from "@/data/services/tv-show-service";
 import Detail from "@/domains/detail";
+import { MediaType } from "@/types/common";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { id: number; mediaType: MediaType };
@@ -9,11 +11,16 @@ type Props = {
 
 export default async function DetailPage({ params }: Props) {
   const { id, mediaType } = params;
+
   let data;
-  if (mediaType === "movie") {
-    data = await tmdbService(`${endpoints.movie.detail}/${id}`);
-  } else {
-    data = await tmdbService(`${endpoints.series.detail}/${id}`);
+  if (mediaType === MediaTypeEnum.MOVIE) {
+    data = await MovieService.getInstance().getDetail(id);
+  } else if (mediaType === MediaTypeEnum.TV) {
+    data = await TvShowService.getInstance().getDetail(id);
+  }
+
+  if (!data) {
+    notFound();
   }
   return <Detail id={id} mediaType={mediaType} data={data} />;
 }

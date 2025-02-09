@@ -1,11 +1,8 @@
-import { endpoints } from "@/data/consts/endpoints";
-import { tmdbService } from "@/data/services/tmdb-service";
 import Home from "@/domains/home";
-import styles from "./page.module.css";
-// to do: remove imports
+import { MovieService } from "@/data/services/movie-service";
 
 export default async function HomePage() {
-  const response = await tmdbService(endpoints.movie.nowPlaying);
+  const nowPlaying = await MovieService.getInstance().getNowPlaying();
 
-  return <Home movies={response.results} />;
+  return <Home movies={nowPlaying.results} />;
 }

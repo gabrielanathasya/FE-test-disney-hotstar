@@ -1,5 +1,5 @@
 import WatchlistContext from "@/context/watchlist-context";
-import { WatchlistItem } from "@/data/models/watchlist";
+import { WatchlistItem } from "@/types/watchlist";
 import { useContext } from "react";
 
 export const useWatchlist = () => {
@@ -11,12 +11,14 @@ export const useWatchlist = () => {
   };
 
   const removeFromWatchlist = (id: number) => {
-    const newWatchlist = watchlist.filter((movie) => movie.id !== id);
+    const newWatchlist = watchlist.filter(
+      (item: WatchlistItem) => item.id !== id,
+    );
     setWatchlist(newWatchlist);
   };
 
-  const isInWatchlist = (movieId: number) => {
-    return !!watchlist.find((movie) => movie.id === movieId);
+  const isInWatchlist = (id: number) => {
+    return !!watchlist.find((item: WatchlistItem) => item.id === id);
   };
 
   return {

@@ -1,4 +1,4 @@
-import { Watchlist } from "../models/watchlist";
+import { Watchlist } from "@/types/watchlist";
 
 const key = "watchlist";
 export const watchlistStorage = {

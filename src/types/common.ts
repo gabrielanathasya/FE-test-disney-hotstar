@@ -1,4 +1,4 @@
-import { MediaTypeEnum } from "../enums/media-type";
+import { MediaTypeEnum } from "@/data/enums/media-type";
 
 export type Genre = {
   id: number;

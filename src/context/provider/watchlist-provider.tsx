@@ -1,9 +1,9 @@
 "use client";
 
-import { Watchlist } from "@/data/models/watchlist";
 import { watchlistStorage } from "@/data/storage/watchlist-storage";
 import { ReactNode, useEffect, useState } from "react";
 import { WatchlistContext } from "@/context/watchlist-context";
+import { Watchlist } from "@/types/watchlist";
 
 interface WatchlistProviderProps {
   children: ReactNode;

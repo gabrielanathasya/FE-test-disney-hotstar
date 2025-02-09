@@ -1,16 +1,16 @@
 "use client";
 
 import styles from "./detail.module.css";
-import { MovieDetail } from "@/data/models/movies";
 import Image from "next/image";
 import { languages } from "@/data/consts/languages";
 import { useWatchlist } from "@/hooks/useWatchlist";
 import WatchNowButton from "@/components/watch-now-button";
 import WatchlistButton from "@/components/watchlist-button";
-import { TVShowDetail } from "@/data/models/series";
-import { Genre, MediaType } from "@/data/models/common";
-import { WatchlistItem } from "@/data/models/watchlist";
 import { MediaTypeEnum } from "@/data/enums/media-type";
+import { WatchlistItem } from "@/types/watchlist";
+import { MovieDetail } from "@/types/movies";
+import { TVShowDetail } from "@/types/tv-shows";
+import { Genre, MediaType } from "@/types/common";
 
 type Props = {
   id: number;

@@ -1,7 +1,6 @@
 "use client";
 
 import styles from "./home.module.css";
-import { Movie } from "@/data/models/movies";
 import { useState } from "react";
 import Image from "next/image";
 import { languages } from "@/data/consts/languages";
@@ -9,6 +8,7 @@ import { genres } from "@/data/consts/genres";
 import { useWatchlist } from "@/hooks/useWatchlist";
 import WatchNowButton from "@/components/watch-now-button";
 import WatchlistButton from "@/components/watchlist-button";
+import { Movie } from "@/types/movies";
 
 type Props = {
   movies: Movie[];
