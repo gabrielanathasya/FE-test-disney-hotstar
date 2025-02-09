@@ -1,4 +1,4 @@
-import { TVShowDetail } from "@/types/tv-shows";
+import { EpisodeDetail, SeasonDetail, TVShowDetail } from "@/types/tv-shows";
 import { endpoints } from "../consts/endpoints";
 import { FetchTvParams } from "../models/request/tv-request";
 import { SearchTvShowResponse } from "../models/response/tv-show-response";
@@ -27,6 +27,24 @@ export class TvShowService {
       {
         params,
       },
+    );
+    return response.data;
+  }
+
+  public async getSeasonDetail(id: number, seasonNumber: number) {
+    const response = await apiClient.get<SeasonDetail>(
+      `${endpoints.series.detail}/${id}/season/${seasonNumber}`,
+    );
+    return response.data;
+  }
+
+  public async getEpisodeDetail(
+    id: number,
+    seasonNumber: number,
+    episodeNumber: number,
+  ) {
+    const response = await apiClient.get<EpisodeDetail>(
+      `${endpoints.series.detail}/${id}/season/${seasonNumber}/episode/${episodeNumber}`,
     );
     return response.data;
   }

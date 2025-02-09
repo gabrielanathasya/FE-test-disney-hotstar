@@ -44,7 +44,6 @@ export default function Search({ movies, tvShow, trending }: Props) {
   };
 
   const renderResults = () => {
-    console.log({ renderResults });
     return (
       <>
         {movies?.length > 0 && (

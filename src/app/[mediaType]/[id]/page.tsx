@@ -7,20 +7,37 @@ import { notFound } from "next/navigation";
 
 type Props = {
   params: { id: number; mediaType: MediaType };
+  searchParams: { season?: number };
 };
 
-export default async function DetailPage({ params }: Props) {
+export default async function DetailPage({ params, searchParams }: Props) {
   const { id, mediaType } = params;
+  const { season } = searchParams;
 
   let data;
+  let seasonsDetail;
+
   if (mediaType === MediaTypeEnum.MOVIE) {
     data = await MovieService.getInstance().getDetail(id);
   } else if (mediaType === MediaTypeEnum.TV) {
     data = await TvShowService.getInstance().getDetail(id);
+    if (season) {
+      seasonsDetail = await TvShowService.getInstance().getSeasonDetail(
+        id,
+        season,
+      );
+    }
   }
 
   if (!data) {
     notFound();
   }
-  return <Detail id={id} mediaType={mediaType} data={data} />;
+  return (
+    <Detail
+      id={id}
+      mediaType={mediaType}
+      data={data}
+      seasonsDetail={seasonsDetail}
+    />
+  );
 }

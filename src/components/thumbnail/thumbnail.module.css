@@ -1,0 +1,33 @@
+.wrapper {
+  position: relative;
+  aspect-ratio: 16/9;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  width: 225px;
+}
+
+.thumbnail {
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.skeletonBox {
+  display: inline-block;
+  height: 1em;
+  position: relative;
+  overflow: hidden;
+  background-color: #252833;
+  width: 100%;
+  height: 100%;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,10 +1,10 @@
 "use client";
 
-import { Movie } from "@/data/models/movies";
-import { TvShow } from "@/data/models/tv-shows";
+import { Movie } from "@/types/movies";
 import styles from "./poster-grid.module.css";
 import PosterImage from "@/components/poster-image";
-import { MediaType } from "@/data/models/common";
+import { TvShow } from "@/types/tv-shows";
+import { MediaType } from "@/types/common";
 
 type Result = Movie | TvShow;
 type Props = {
