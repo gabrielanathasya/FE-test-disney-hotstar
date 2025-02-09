@@ -17,27 +17,19 @@ type Props = {
   id: number;
   mediaType: MediaType;
   data: MovieDetail | TVShowDetail;
-  seasonsDetail?: SeasonDetail;
+  allSeasonDetails: SeasonDetail[];
 };
 
-export default function Detail({ id, mediaType, data, seasonsDetail }: Props) {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+export default function Detail({
+  id,
+  mediaType,
+  data,
+  allSeasonDetails,
+}: Props) {
   const { isInWatchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
-
-  const [selectedSeason, setSelectedSeason] = useState<number>(
-    parseInt(searchParams?.get("season") ?? "1"),
-  );
+  const [selectedSeason, setSelectedSeason] = useState<number>(1);
 
   const isCurrentDataInWatchList = isInWatchlist(id);
-
-  useEffect(() => {
-    const params = {
-      season: selectedSeason.toString(),
-    };
-    const searchParams = new URLSearchParams(params);
-    router.replace(`/${mediaType}/${id}?${searchParams.toString()}`);
-  }, [selectedSeason]);
 
   const handleClickWatchlist = () => {
     if (isCurrentDataInWatchList) {
@@ -77,13 +69,13 @@ export default function Detail({ id, mediaType, data, seasonsDetail }: Props) {
         isCurrentDataInWatchList={isCurrentDataInWatchList}
         handleClickWatchlist={handleClickWatchlist}
       />
-      {mediaType === MediaTypeEnum.TV && seasonsDetail && (
+      {mediaType === MediaTypeEnum.TV && allSeasonDetails && (
         <div className={styles.bottomSection}>
           <h1 className={styles.bigTab}>Episodes</h1>
           <span className={styles.divider} />
           <div className={styles.tabContainer}>
-            {[...Array((data as TVShowDetail).number_of_seasons)].map(
-              (value: undefined, index: number) => (
+            {allSeasonDetails.map(
+              (seasonDetail: SeasonDetail, index: number) => (
                 <span
                   key={index}
                   className={`${styles.tab} ${
@@ -91,36 +83,38 @@ export default function Detail({ id, mediaType, data, seasonsDetail }: Props) {
                   }`}
                   onClick={() => handleSelectSeason(index + 1)}
                 >
-                  Season {index + 1}
+                  {seasonDetail.name}
                 </span>
               ),
             )}
           </div>
           <div className={styles.episodesList}>
-            {seasonsDetail?.episodes?.map((episode: EpisodeDetail) => {
-              return (
-                <div key={episode.id} className={styles.episodeCard}>
-                  <div className={styles.thumbnailWrapper}>
-                    <Thumbnail alt={episode.name} path={episode.still_path} />
-                  </div>
-                  <div className={styles.infoSection}>
-                    <h3 className={styles.episodeTitle}>{episode.name}</h3>
-                    <div className={styles.subInfo}>
-                      <p>
-                        S{episode.season_number} E{episode.episode_number}
-                      </p>
-                      <span className={styles.separator}>&#x2022;</span>
-                      <p>{formatDate(episode.air_date)}</p>
-                      <span className={styles.separator}>&#x2022;</span>
-                      <p>{episode.runtime}m</p>
+            {allSeasonDetails[selectedSeason - 1]?.episodes?.map(
+              (episode: EpisodeDetail) => {
+                return (
+                  <div key={episode.id} className={styles.episodeCard}>
+                    <div className={styles.thumbnailWrapper}>
+                      <Thumbnail alt={episode.name} path={episode.still_path} />
                     </div>
-                    <p className={styles.episodeDescription}>
-                      {episode.overview}
-                    </p>
+                    <div className={styles.infoSection}>
+                      <h3 className={styles.episodeTitle}>{episode.name}</h3>
+                      <div className={styles.subInfo}>
+                        <p>
+                          S{episode.season_number} E{episode.episode_number}
+                        </p>
+                        <span className={styles.separator}>&#x2022;</span>
+                        <p>{formatDate(episode.air_date)}</p>
+                        <span className={styles.separator}>&#x2022;</span>
+                        <p>{episode.runtime}m</p>
+                      </div>
+                      <p className={styles.episodeDescription}>
+                        {episode.overview}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
+                );
+              },
+            )}
           </div>
         </div>
       )}
