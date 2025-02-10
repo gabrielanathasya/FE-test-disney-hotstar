@@ -92,6 +92,7 @@ export default function Search({ movies, tvShow, trending }: Props) {
             className={styles.closeButton}
             onClick={handleRemoveQuery}
             size={40}
+            role="button"
           />
         )}
       </span>

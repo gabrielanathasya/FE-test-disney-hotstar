@@ -2,8 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import PopOver from "@/components/pop-over";
 import { useWatchlist } from "@/hooks/useWatchlist";
 import { useRouter } from "next/navigation";
-import { TvShow } from "@/types/tv-shows";
-import { Movie } from "@/types/movies";
+import { mockMovie, mockTvShow } from "@/mocks/mockData";
 
 jest.mock("next/image", () => ({
   __esModule: true,
@@ -50,41 +49,6 @@ describe("PopOver", () => {
     isInWatchlist: jest.fn(),
     addToWatchlist: jest.fn(),
     removeFromWatchlist: jest.fn(),
-  };
-
-  const mockMovie: Movie = {
-    id: 1,
-    title: "Inception",
-    original_title: "Inception",
-    poster_path: "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
-    backdrop_path: "/s3TBrRGB1iav7gFOCNx3H31MoES.jpg",
-    overview: "Test overview",
-    release_date: "2010-07-16",
-    vote_average: 8.8,
-    media_type: "movie",
-    adult: false,
-    genre_ids: [28, 878, 12], // Action, Science Fiction, Adventure
-    original_language: "en",
-    popularity: 198.456,
-    video: false,
-    vote_count: 32456,
-  };
-  const mockTvShow: TvShow = {
-    id: 1,
-    name: "Westworld",
-    original_name: "Westworld",
-    poster_path: "/8MfgyFHf7XEboZJPZXCIDqqiz6e.jpg",
-    backdrop_path: "/yGNnjoIGOdQy3douq60tULY8teK.jpg",
-    overview: "Test overview",
-    first_air_date: "2016-10-02",
-    vote_average: 8.1,
-    media_type: "tv",
-    original_language: "en",
-    genre_ids: [10765, 37], // Sci-Fi & Fantasy, Western
-    origin_country: "US",
-    popularity: 123.456,
-    vote_count: 7845,
-    adult: false,
   };
   const defaultProps = {
     data: mockMovie,
