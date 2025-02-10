@@ -18,7 +18,7 @@ export default function EmptySearch({ query }: Props) {
           />
         </div>
         <h3 className={styles.msgTitle}>
-          Couldn&#x2018t find &#x201C{query}&#x201D
+          Couldn&#x2018;t find &#x201C;{query}&#x201D;
         </h3>
         <p className={styles.msgDescr}>
           Try searching for something else or try with a different spelling
