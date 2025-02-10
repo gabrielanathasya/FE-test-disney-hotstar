@@ -87,3 +87,4 @@ Follows a hybrid approach of feature and domain driven structure. The shared com
 - Mobile responsiveness and micro interaction
 - Enhanced error handling
 - Analytics integration
+- Larger testing coverage
