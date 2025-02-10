@@ -40,8 +40,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 This project requires the following environment variables to be set in your `.env.local` file:
 
-`NEXT_PUBLIC_TMDB_BASE_URL`: Tmdb database connection string
-`NEXT_PUBLIC_TMDB_API_KEY`: Your API key for Tmdb services
-`NEXT_PUBLIC_TMDB_IMAGE_BASE_URL`: The URL to fetch images from Tmdb
+- `NEXT_PUBLIC_TMDB_BASE_URL`: Tmdb database connection string
+- `NEXT_PUBLIC_TMDB_API_KEY`: Your API key for Tmdb services
+- `NEXT_PUBLIC_TMDB_IMAGE_BASE_URL`: The URL to fetch images from Tmdb
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
