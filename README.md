@@ -46,7 +46,7 @@ This project requires the following environment variables to be set in your `.en
 
 ## Deployed on Vercel
 
-This project is deployed on Vercel, follow this link to check it out (https://disney-hotstar-clone-liard.vercel.app/)https://disney-hotstar-clone-liard.vercel.app/
+This project is deployed on Vercel, follow this link to check it out [https://disney-hotstar-clone-liard.vercel.app/](https://disney-hotstar-clone-liard.vercel.app/)
 
 ## Architecture and Approach
 
