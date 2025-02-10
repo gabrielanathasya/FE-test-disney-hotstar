@@ -6,11 +6,13 @@ import { languages } from "@/data/consts/languages";
 import WatchNowButton from "@/components/watch-now-button";
 import WatchlistButton from "@/components/watchlist-button";
 import { MediaTypeEnum } from "@/data/enums/media-type";
-import { Movie, MovieDetail } from "@/types/movies";
-import { TvShow, TVShowDetail } from "@/types/tv-shows";
+import { Movie } from "@/types/movies";
+import { TvShow } from "@/types/tv-shows";
 import { Genre, MediaType } from "@/types/common";
 import { genres } from "@/data/consts/genres";
 import FeaturedCarousel from "@/components/featured-carousel";
+import { useState } from "react";
+import FallbackImage from "../fallback-image";
 
 type Props = {
   mediaType: MediaType;
@@ -31,23 +33,43 @@ export default function BackdropScreen({
   data,
   isShowCarousel = false,
 }: Props) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+
+  const alt =
+    mediaType === MediaTypeEnum.MOVIE ? selectedData.title : selectedData.name;
+
+  const handleLoad = () => {
+    setIsLoading(false);
+  };
+
+  const handleError = () => {
+    setIsLoading(false);
+    setHasError(true);
+  };
+
   return (
     <div className={styles.topSection}>
       <span className={styles.gradient} />
       <span className={styles.gradientBottom} />
       <div className={styles.backdropContainer}>
-        <Image
-          src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${selectedData.backdrop_path}`}
-          fill
-          priority
-          sizes="100vw"
-          alt={
-            mediaType === MediaTypeEnum.MOVIE
-              ? selectedData.title
-              : selectedData.name
-          }
-          className={styles.backdrop}
-        />
+        {isLoading && !hasError && selectedData.poster_path && (
+          <span className={styles.skeletonBox} />
+        )}
+        {selectedData.poster_path && !hasError ? (
+          <Image
+            src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${selectedData.backdrop_path}`}
+            fill
+            sizes="100vw"
+            priority
+            alt={alt}
+            className={styles.backdrop}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
+        ) : (
+          <FallbackImage name={alt} />
+        )}
       </div>
       <div className={styles.infoSection}>
         <h1 className={styles.title}>

@@ -1,5 +1,5 @@
 .title {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 14px;
 }
@@ -10,4 +10,120 @@
   grid-template-columns: repeat(auto-fill, minmax(174px, 1fr));
   gap: 12px;
   row-gap: 24px;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 12px;
+  padding: 0 1rem;
+  min-width: 268px;
+}
+
+.wrapper {
+  position: relative;
+  overflow: hidden;
+  height: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.content::-webkit-scrollbar {
+  display: none;
+}
+
+.navButton svg {
+  width: 50px;
+  height: 50px;
+  color: white;
+}
+
+.navButtonLeft {
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  z-index: 150;
+  border: none;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgb(15, 16, 20) 0%,
+    rgba(15, 16, 20, 0.98) 5%,
+    rgba(15, 16, 20, 0.95) 10%,
+    rgba(15, 16, 20, 0.9) 15%,
+    rgba(15, 16, 20, 0.85) 20%,
+    rgba(15, 16, 20, 0.8) 25%,
+    rgba(15, 16, 20, 0.75) 30%,
+    rgba(15, 16, 20, 0.7) 35%,
+    rgba(15, 16, 20, 0.65) 40%,
+    rgba(15, 16, 20, 0.6) 45%,
+    rgba(15, 16, 20, 0.55) 50%,
+    rgba(15, 16, 20, 0.45) 60%,
+    rgba(15, 16, 20, 0.35) 70%,
+    rgba(15, 16, 20, 0.25) 80%,
+    rgba(15, 16, 20, 0.15) 90%,
+    rgba(15, 16, 20, 0.05) 95%,
+    rgba(15, 16, 20, 0) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.navButtonRight {
+  height: 100%;
+  position: absolute;
+  bottom: 0;
+  z-index: 150;
+  border: none;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  cursor: pointer;
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgb(15, 16, 20) 0%,
+    rgba(15, 16, 20, 0.98) 5%,
+    rgba(15, 16, 20, 0.95) 10%,
+    rgba(15, 16, 20, 0.9) 15%,
+    rgba(15, 16, 20, 0.85) 20%,
+    rgba(15, 16, 20, 0.8) 25%,
+    rgba(15, 16, 20, 0.75) 30%,
+    rgba(15, 16, 20, 0.7) 35%,
+    rgba(15, 16, 20, 0.65) 40%,
+    rgba(15, 16, 20, 0.6) 45%,
+    rgba(15, 16, 20, 0.55) 50%,
+    rgba(15, 16, 20, 0.45) 60%,
+    rgba(15, 16, 20, 0.35) 70%,
+    rgba(15, 16, 20, 0.25) 80%,
+    rgba(15, 16, 20, 0.15) 90%,
+    rgba(15, 16, 20, 0.05) 95%,
+    rgba(15, 16, 20, 0) 100%
+  );
+  transition: all 0.3s ease;
+}
+
+.item {
+  transition: all 0.1s;
+  flex: 0 0 200px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
 }

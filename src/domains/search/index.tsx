@@ -85,7 +85,7 @@ export default function Search({ movies, tvShow, trending }: Props) {
           />
         )}
       </span>
-      {query && movies?.length === 0 ? (
+      {query && !movies?.length ? (
         <EmptySearch query={query} />
       ) : (
         <div className={styles.resultGrid}>{renderResults()}</div>

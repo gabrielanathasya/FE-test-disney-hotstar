@@ -8,6 +8,7 @@ import BackdropScreen from "@/components/backdrop-screen";
 import { MediaTypeEnum } from "@/data/enums/media-type";
 import { TvShow } from "@/types/tv-shows";
 import { WatchlistItem } from "@/types/watchlist";
+import PosterGrid from "@/components/poster-grid";
 
 type Props = {
   topRatedTvShow: TvShow[];
@@ -66,6 +67,23 @@ export default function Home({
         handleClickWatchlist={handleClickWatchlist}
         data={topRatedTvShow}
       />
+      <div className={styles.contentSection}>
+        <PosterGrid
+          isCarouselMode={true}
+          title="Top Rated Movies & TV Series"
+          data={[...topRatedMovie, ...topRatedTvShow]}
+        />
+        <PosterGrid
+          isCarouselMode={true}
+          title="Top Rated Movies of the week"
+          data={trendingMovie}
+        />
+        <PosterGrid
+          isCarouselMode={true}
+          title="Top Rated TV Series of the week"
+          data={trendingTvShow}
+        />
+      </div>
     </div>
   );
 }

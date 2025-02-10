@@ -16,8 +16,9 @@ type Props = {
 export default async function DetailPage({ params }: Props) {
   const { id, mediaType } = params;
 
-  let data: MovieDetail | TVShowDetail;
+  let data: MovieDetail | TVShowDetail | null = null;
   let allSeasonDetails: SeasonDetail[] = [];
+
   if (mediaType === MediaTypeEnum.MOVIE) {
     data = await MovieService.getInstance().getDetail(id);
   } else if (mediaType === MediaTypeEnum.TV) {
@@ -33,19 +34,19 @@ export default async function DetailPage({ params }: Props) {
         ),
       );
     }
-
-    if (!data) {
-      notFound();
-    }
-    return (
-      <Suspense fallback={<Loading />}>
-        <Detail
-          id={id}
-          mediaType={mediaType}
-          data={data}
-          allSeasonDetails={allSeasonDetails}
-        />
-      </Suspense>
-    );
   }
+
+  if (!data) {
+    notFound();
+  }
+  return (
+    <Suspense fallback={<Loading />}>
+      <Detail
+        id={id}
+        mediaType={mediaType}
+        data={data}
+        allSeasonDetails={allSeasonDetails}
+      />
+    </Suspense>
+  );
 }
