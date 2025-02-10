@@ -46,18 +46,18 @@ This project requires the following environment variables to be set in your `.en
 
 ## Deployed on Vercel
 
-This project is deployed on Vercel, follow this link to check it out [https://disney-hotstar-clone-liard.vercel.app/](https://disney-hotstar-clone-liard.vercel.app/)
+This project is deployed on Vercel, follow this link to check it out [https://disney-hotstar-clone-liard.vercel.app/](https://disney-hotstar-clone-liard.vercel.app/).
 
 ## Architecture and Approach
 
 This application is built with the following decisions:
 
-**Server-Side Rendering (SSR)**: Implemented using React's fetch capabilities to optimize performance and SEO. This approach also reduces client-side JavaScript bundle size and improves Core Web Vitals metrics by pre-rendering the content
+**Server-Side Rendering (SSR)**: Implemented using React's fetch capabilities to optimize performance and SEO. This approach also reduces client-side JavaScript bundle size and improves Core Web Vitals metrics by pre-rendering the content.
 
-**State Management**: Utilizes React Context for centralized operations and localStorage management. Custom hooks are used to handle abstract logic for state mutations and simple implementation for components
+**State Management**: Utilizes React Context for centralized operations and localStorage management. Custom hooks are used to handle abstract logic for state mutations and simple implementation for components.
 
 **Component Structure**:
-Follows a hybrid approach of feature and domain driven structure. The shared components layer contains of reusable generic components that can be used on different domains. This layer has flat structure for easy discovery, and promotes consistent UI accross the application. The domain layer separates the code by feature (home, search, detail). Each domain contains specific components and business logic
+Follows a hybrid approach of feature and domain driven structure. The shared components layer contains of reusable generic components that can be used on different domains. This layer has flat structure for easy discovery, and promotes consistent UI accross the application. The domain layer separates the code by feature (home, search, detail). Each domain contains specific components and business logic.
 
 **API Architecture**:
 
