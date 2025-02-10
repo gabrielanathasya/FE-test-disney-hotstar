@@ -44,4 +44,16 @@ This project requires the following environment variables to be set in your `.en
 - `NEXT_PUBLIC_TMDB_API_KEY`: Your API key for Tmdb services
 - `NEXT_PUBLIC_TMDB_IMAGE_BASE_URL`: The URL to fetch images from Tmdb
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Architecture and Approach
+
+This application is built with the following architectural decisions:
+
+**Server-Side Rendering (SSR)**: Implemented using React's fetch capabilities to optimize performance and SEO.
+**State Management**: Utilizes React Context for centralized operations and localStorage management.
+**Component Structure**: Follows Atomic Design principles, organizing components into atoms that serve as building blocks for larger components, reducing redundancy.
+**UI Priority**: Desktop-first approach for the user interface development.
+**API Architecture**:
+
+- Centralized API client for core functionality
+- Feature-based service separation for better maintainability
+- Modular approach to API integration

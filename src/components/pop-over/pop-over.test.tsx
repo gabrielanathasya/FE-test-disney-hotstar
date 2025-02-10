@@ -2,7 +2,6 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import PopOver from "@/components/pop-over";
 import { useWatchlist } from "@/hooks/useWatchlist";
 import { useRouter } from "next/navigation";
-import { MediaTypeEnum } from "@/data/enums/media-type";
 import { TvShow } from "@/types/tv-shows";
 import { Movie } from "@/types/movies";
 
