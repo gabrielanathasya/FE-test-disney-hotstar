@@ -34,7 +34,7 @@ export default function Search({ movies, tvShow, trending }: Props) {
       const searchParams = new URLSearchParams(params);
       router.replace(`${routes.search}?${searchParams.toString()}`);
     });
-  }, [query]);
+  }, [query, debounce, router]);
 
   const handleChangeQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
