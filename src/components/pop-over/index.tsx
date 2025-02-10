@@ -7,7 +7,6 @@ import { TvShow } from "@/types/tv-shows";
 import { MediaTypeEnum } from "@/data/enums/media-type";
 import { languages } from "@/data/consts/languages";
 import { useState } from "react";
-import Link from "next/link";
 import FallbackImage from "../fallback-image";
 import { useWatchlist } from "@/hooks/useWatchlist";
 import { WatchlistItem } from "@/types/watchlist";
