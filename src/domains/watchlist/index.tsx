@@ -4,8 +4,10 @@ import { useWatchlist } from "@/hooks/useWatchlist";
 import styles from "./watchlist.module.css";
 import PosterGrid from "../../components/poster-grid";
 import EmptyState from "./components/empty-state";
+import { useState } from "react";
 
 export default function Watchlist() {
+  const [currentPopOverId, setCurrentPopOverId] = useState<number | null>(null);
   const { watchlist } = useWatchlist();
 
   return (
@@ -14,7 +16,12 @@ export default function Watchlist() {
       {!watchlist.length ? (
         <EmptyState />
       ) : (
-        <PosterGrid title="" data={watchlist} />
+        <PosterGrid
+          title=""
+          data={watchlist}
+          currentPopOverId={currentPopOverId}
+          setCurrentPopOverId={setCurrentPopOverId}
+        />
       )}
     </div>
   );

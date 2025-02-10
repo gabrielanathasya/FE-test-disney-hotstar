@@ -10,7 +10,8 @@ export default function NotFound() {
       <div className={styles.content}>
         <h1 className={styles.title}>Page Not Found</h1>
         <p className={styles.description}>
-          Oops! The page you're looking for doesn't exist or has been moved.
+          Oops! The page you&#x2018re looking for doesn&#x2018t exist or has
+          been moved.
         </p>
         <Link href={routes.home} className={styles.button}>
           Return Home
