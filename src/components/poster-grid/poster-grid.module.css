@@ -4,6 +4,10 @@
   margin-bottom: 14px;
 }
 
+.titleCarousel {
+  margin-bottom: -18px;
+}
+
 .grid {
   display: grid;
   width: 88%;
@@ -15,14 +19,18 @@
 .container {
   width: 100%;
   margin: 0 auto;
-  margin-top: 12px;
+  margin-top: 40px;
   padding: 0 1rem;
   min-width: 268px;
 }
 
+.containerCarousel {
+  margin-top: -20px;
+}
+
 .wrapper {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   height: auto;
   display: flex;
   align-items: flex-end;
@@ -124,6 +132,5 @@
   flex: 0 0 200px;
   position: relative;
   border-radius: 8px;
-  overflow: hidden;
   scroll-snap-align: start;
 }

@@ -1,11 +1,25 @@
 .container {
   position: absolute;
-  left: -25%;
-  top: -10%;
   transition: all 0.2s ease-out;
   z-index: 100;
   border-radius: 12px;
   overflow: hidden;
+}
+
+.topLg {
+  top: -10%;
+}
+
+.topMd {
+  top: -5%;
+}
+
+.leftLg {
+  left: 0;
+}
+
+.leftMd {
+  left: -25%;
 }
 
 .containerHide {

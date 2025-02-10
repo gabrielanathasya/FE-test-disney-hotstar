@@ -18,12 +18,16 @@ type Props = {
   mediaType?: MediaType;
   currentPopOverId: number | null;
   setCurrentPopOverId: (value: number | null) => void;
+  isCarouselMode?: boolean;
+  isFirst?: boolean;
 };
 export default function PosterImage({
   data,
   mediaType,
   currentPopOverId,
   setCurrentPopOverId,
+  isCarouselMode = false,
+  isFirst = false,
 }: Props) {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -48,7 +52,9 @@ export default function PosterImage({
     <Link href={linkUrl}>
       <div className={styles.popOverContainer}>
         <div
-          className={styles.wrapper}
+          className={`${styles.wrapper} ${
+            isCarouselMode ? styles.wrapperMargin : ""
+          }`}
           onMouseEnter={() => setCurrentPopOverId(data.id)}
         >
           {isLoading && !hasError && data.poster_path && (
@@ -74,6 +80,8 @@ export default function PosterImage({
           data={data}
           isVisible={data.id === currentPopOverId}
           onMouseLeave={() => setCurrentPopOverId(null)}
+          isCarouselMode={isCarouselMode}
+          isFirst={isFirst}
         />
       </div>
     </Link>

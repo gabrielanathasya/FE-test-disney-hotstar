@@ -23,6 +23,7 @@ export default function Home({
   trendingTvShow,
   trendingMovie,
 }: Props) {
+  const [currentPopOverId, setCurrentPopOverId] = useState<number | null>(null);
   const [selectedData, setSelectedData] = useState<Movie | TvShow>(
     topRatedTvShow[0],
   );
@@ -72,16 +73,22 @@ export default function Home({
           isCarouselMode={true}
           title="Top Rated Movies & TV Series"
           data={[...topRatedMovie, ...topRatedTvShow]}
+          currentPopOverId={currentPopOverId}
+          setCurrentPopOverId={setCurrentPopOverId}
         />
         <PosterGrid
           isCarouselMode={true}
           title="Top Rated Movies of the week"
           data={trendingMovie}
+          currentPopOverId={currentPopOverId}
+          setCurrentPopOverId={setCurrentPopOverId}
         />
         <PosterGrid
           isCarouselMode={true}
           title="Top Rated TV Series of the week"
           data={trendingTvShow}
+          currentPopOverId={currentPopOverId}
+          setCurrentPopOverId={setCurrentPopOverId}
         />
       </div>
     </div>

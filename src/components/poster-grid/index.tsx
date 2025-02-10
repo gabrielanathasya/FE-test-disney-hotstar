@@ -15,6 +15,8 @@ type Props = {
   data: Result[] | Watchlist;
   mediaType?: MediaType;
   isCarouselMode?: boolean;
+  currentPopOverId: number | null;
+  setCurrentPopOverId: (value: number | null) => void;
 };
 
 export default function PosterGrid({
@@ -22,9 +24,9 @@ export default function PosterGrid({
   data,
   mediaType,
   isCarouselMode = false,
+  currentPopOverId,
+  setCurrentPopOverId,
 }: Props) {
-  const [currentPopOverId, setCurrentPopOverId] = useState<number | null>(null);
-
   const carouselRef = useRef<HTMLDivElement>(null);
   const [showLeftArrow, setShowLeftArrow] = useState<boolean>(false);
   const [showRightArrow, setShowRightArrow] = useState<boolean>(false);
@@ -67,8 +69,18 @@ export default function PosterGrid({
   };
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{title}</h1>
+    <div
+      className={`${styles.container} ${
+        isCarouselMode ? styles.containerCarousel : ""
+      }`}
+    >
+      <h1
+        className={`${styles.title} ${
+          isCarouselMode ? styles.titleCarousel : ""
+        }`}
+      >
+        {title}
+      </h1>
       <div
         className={`${isCarouselMode ? styles.wrapper : styles.grid}`}
         onMouseEnter={isCarouselMode ? checkScrollable : () => {}}
@@ -115,7 +127,7 @@ export default function PosterGrid({
             onScroll={handleScroll}
             className={styles.content}
           >
-            {data?.map((item: Result | WatchlistItem) => {
+            {data?.map((item: Result | WatchlistItem, i: number) => {
               return (
                 <div key={item.id} className={styles.item}>
                   <PosterImage
@@ -123,6 +135,8 @@ export default function PosterGrid({
                     mediaType={mediaType}
                     currentPopOverId={currentPopOverId}
                     setCurrentPopOverId={setCurrentPopOverId}
+                    isCarouselMode={isCarouselMode}
+                    isFirst={i === 0}
                   />
                 </div>
               );
@@ -130,7 +144,7 @@ export default function PosterGrid({
           </div>
         ) : (
           <>
-            {data?.map((item: Result | WatchlistItem) => {
+            {data?.map((item: Result | WatchlistItem, i: number) => {
               return (
                 <PosterImage
                   key={item.id}
@@ -138,6 +152,7 @@ export default function PosterGrid({
                   mediaType={mediaType}
                   currentPopOverId={currentPopOverId}
                   setCurrentPopOverId={setCurrentPopOverId}
+                  isFirst={i === 0}
                 />
               );
             })}

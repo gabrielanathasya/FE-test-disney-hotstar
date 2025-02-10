@@ -23,6 +23,7 @@ export default function Search({ movies, tvShow, trending }: Props) {
   const searchParams = useSearchParams();
   const { debounce } = useDebounce();
 
+  const [currentPopOverId, setCurrentPopOverId] = useState<number | null>(null);
   const [query, setQuery] = useState<string>(searchParams?.get("query") ?? "");
 
   useEffect(() => {
@@ -51,6 +52,8 @@ export default function Search({ movies, tvShow, trending }: Props) {
             title="Movies"
             data={movies}
             mediaType={MediaTypeEnum.MOVIE}
+            currentPopOverId={currentPopOverId}
+            setCurrentPopOverId={setCurrentPopOverId}
           />
         )}
         {tvShow?.length > 0 && (
@@ -58,10 +61,17 @@ export default function Search({ movies, tvShow, trending }: Props) {
             title="TV Shows"
             data={tvShow}
             mediaType={MediaTypeEnum.TV}
+            currentPopOverId={currentPopOverId}
+            setCurrentPopOverId={setCurrentPopOverId}
           />
         )}
         {!tvShow?.length && !movies?.length && (
-          <PosterGrid title="Trending Now" data={trending} />
+          <PosterGrid
+            title="Trending Now"
+            data={trending}
+            currentPopOverId={currentPopOverId}
+            setCurrentPopOverId={setCurrentPopOverId}
+          />
         )}
       </>
     );

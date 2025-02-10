@@ -17,9 +17,17 @@ type Props = {
   data: Movie | TvShow | WatchlistItem;
   isVisible: boolean;
   onMouseLeave: () => void;
+  isCarouselMode: boolean;
+  isFirst?: boolean; // first item in carousel
 };
 
-export default function PopOver({ data, isVisible, onMouseLeave }: Props) {
+export default function PopOver({
+  data,
+  isVisible,
+  onMouseLeave,
+  isCarouselMode,
+  isFirst = false,
+}: Props) {
   const router = useRouter();
   const { isInWatchlist, addToWatchlist, removeFromWatchlist } = useWatchlist();
 
@@ -69,12 +77,12 @@ export default function PopOver({ data, isVisible, onMouseLeave }: Props) {
     router.push(data.media_type ? `/${data.media_type}/${data.id}` : "/");
   };
 
-  console.log({ data });
-
   return (
     <div
       className={`${styles.container} ${
         isVisible ? styles.containerShow : styles.containerHide
+      } ${isCarouselMode ? styles.topMd : styles.topLg} ${
+        isCarouselMode && isFirst ? styles.leftLg : styles.leftMd
       }`}
       onMouseLeave={onMouseLeave}
       onClick={handleClick}

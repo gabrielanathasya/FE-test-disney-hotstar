@@ -6,6 +6,10 @@
   cursor: pointer;
 }
 
+.wrapperMargin {
+  margin: 32px 0 32px 0;
+}
+
 .poster {
   object-fit: cover;
   border-radius: 8px;
