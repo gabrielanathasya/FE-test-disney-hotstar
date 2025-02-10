@@ -47,7 +47,7 @@ export default function Detail({
         release_date:
           mediaType === MediaTypeEnum.MOVIE
             ? (data as MovieDetail).release_date
-            : (data as TVShowDetail).last_air_date,
+            : (data as TVShowDetail).first_air_date,
         media_type: mediaType,
         adult: data.adult,
         genre_ids: data.genres?.map((item) => item.id),
@@ -64,8 +64,9 @@ export default function Detail({
   return (
     <div>
       <BackdropScreen
+        isShowCarousel={false}
         mediaType={mediaType}
-        data={data}
+        selectedData={data}
         isCurrentDataInWatchList={isCurrentDataInWatchList}
         handleClickWatchlist={handleClickWatchlist}
       />

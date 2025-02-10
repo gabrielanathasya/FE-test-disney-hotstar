@@ -2,7 +2,6 @@
   display: grid;
   gap: 32px;
   padding: 32px 32px 32px 110px;
-  max-width: 100%;
 }
 
 .searchbar {
@@ -36,4 +35,10 @@
 .closeButton {
   margin: -16px 0 -16px 0;
   cursor: pointer;
+}
+
+.resultGrid {
+  display: grid;
+  gap: 12px;
+  height: 100%;
 }

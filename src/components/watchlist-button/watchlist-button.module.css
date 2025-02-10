@@ -1,19 +1,51 @@
 .button {
   border: 0;
   cursor: pointer;
-  background-color: rgba(128, 128, 128, 0.6);
-  color: white;
-  font-size: 1rem;
-  font-weight: 400;
+  font-weight: 600;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease-out;
+  flex-shrink: 0;
+}
+
+.buttonSecondary {
+  background-color: rgba(128, 128, 128, 0.5);
+  color: white;
+}
+
+.buttonPrimary {
+  background-color: #ffffff;
+  color: black;
+}
+
+.buttonInverse {
+  background-color: rgba(128, 128, 128, 0.5);
+  color: white;
+}
+
+.buttonSizeLg {
+  width: 52px;
+  height: 52px;
+  font-size: 1.125rem;
+}
+
+.buttonSizeMd {
+  width: 48px;
+  height: 48px;
+  font-size: 0.875rem;
 }
 
 .button:hover {
-  background-color: rgba(128, 128, 128, 0.9);
   transform: scale(1.03, 1.03);
-  transition: all 0.3s ease;
 }
 
-.buttonWatchList {
-  padding: 8.7px 10px;
+.buttonInverse:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.buttonSecondary:hover {
+  background-color: rgba(128, 128, 128, 0.9);
 }

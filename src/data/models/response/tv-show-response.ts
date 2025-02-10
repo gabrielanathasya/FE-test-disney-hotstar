@@ -6,3 +6,10 @@ export type SearchTvShowResponse = {
   total_pages: number;
   total_results: number;
 };
+
+export type TopRatedTvShowResponse = {
+  page: number;
+  results: TvShow[];
+  total_pages: number;
+  total_results: number;
+};

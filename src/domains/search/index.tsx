@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { RiSearchLine, RiCloseLine } from "react-icons/ri";
 import EmptySearch from "./components/empty-search";
 import { useSearchParams, useRouter } from "next/navigation";
-import PosterGrid from "./components/poster-grid";
+import PosterGrid from "../../components/poster-grid";
 import { useDebounce } from "@/hooks/useDebounce";
 import { MediaTypeEnum } from "@/data/enums/media-type";
 import { routes } from "@/configs/routes";
@@ -88,7 +88,7 @@ export default function Search({ movies, tvShow, trending }: Props) {
       {query && movies?.length === 0 ? (
         <EmptySearch query={query} />
       ) : (
-        renderResults()
+        <div className={styles.resultGrid}>{renderResults()}</div>
       )}
     </div>
   );

@@ -4,6 +4,7 @@ import { FetchMovieParams } from "../models/request/movie-request";
 import {
   NowPlayingMovieResponse,
   SearchMovieResponse,
+  TopRatedMovieResponse,
 } from "../models/response/movie-response";
 import { apiClient } from "./api-client";
 
@@ -37,6 +38,13 @@ export class MovieService {
   public async getNowPlaying() {
     const response = await apiClient.get<NowPlayingMovieResponse>(
       endpoints.movie.nowPlaying,
+    );
+    return response.data;
+  }
+
+  public async getTopRated() {
+    const response = await apiClient.get<TopRatedMovieResponse>(
+      endpoints.movie.topRated,
     );
     return response.data;
   }

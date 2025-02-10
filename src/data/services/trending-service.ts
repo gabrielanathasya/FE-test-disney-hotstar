@@ -13,7 +13,23 @@ export class TrendingService {
   }
 
   public async getAll() {
-    const response = await apiClient.get<TrendingResponse>(endpoints.trending);
+    const response = await apiClient.get<TrendingResponse>(
+      endpoints.trending.all,
+    );
+    return response.data;
+  }
+
+  public async getTrendingTv() {
+    const response = await apiClient.get<TrendingResponse>(
+      endpoints.trending.tv,
+    );
+    return response.data;
+  }
+
+  public async getTrendingMovie() {
+    const response = await apiClient.get<TrendingResponse>(
+      endpoints.trending.movie,
+    );
     return response.data;
   }
 }

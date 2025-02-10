@@ -1,7 +1,10 @@
 import { EpisodeDetail, SeasonDetail, TVShowDetail } from "@/types/tv-shows";
 import { endpoints } from "../consts/endpoints";
 import { FetchTvParams } from "../models/request/tv-request";
-import { SearchTvShowResponse } from "../models/response/tv-show-response";
+import {
+  SearchTvShowResponse,
+  TopRatedTvShowResponse,
+} from "../models/response/tv-show-response";
 import { apiClient } from "./api-client";
 
 export class TvShowService {
@@ -45,6 +48,13 @@ export class TvShowService {
   ) {
     const response = await apiClient.get<EpisodeDetail>(
       `${endpoints.series.detail}/${id}/season/${seasonNumber}/episode/${episodeNumber}`,
+    );
+    return response.data;
+  }
+
+  public async getTopRated() {
+    const response = await apiClient.get<TopRatedTvShowResponse>(
+      endpoints.series.topRated,
     );
     return response.data;
   }

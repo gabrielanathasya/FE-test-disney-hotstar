@@ -26,5 +26,9 @@ export const endpoints = {
     tv: "/search/tv",
     movie: "/search/movie",
   },
-  trending: "/trending/all/week",
+  trending: {
+    all: "/trending/all/week",
+    movie: "/trending/movie/week",
+    tv: "/trending/tv/week",
+  },
 };

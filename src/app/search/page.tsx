@@ -2,6 +2,8 @@ import { MovieService } from "@/data/services/movie-service";
 import { TrendingService } from "@/data/services/trending-service";
 import { TvShowService } from "@/data/services/tv-show-service";
 import Search from "@/domains/search";
+import { Suspense } from "react";
+import Loading from "../loading";
 
 type Props = {
   searchParams: { query?: string };
@@ -21,10 +23,12 @@ export default async function SearchPage({ searchParams }: Props) {
   }
 
   return (
-    <Search
-      movies={movies?.results?.slice(0, 8) ?? []}
-      tvShow={tvShow?.results?.slice(0, 8) ?? []}
-      trending={trending?.results?.slice(0, 8) ?? []}
-    />
+    <Suspense fallback={<Loading />}>
+      <Search
+        movies={movies?.results?.slice(0, 8) ?? []}
+        tvShow={tvShow?.results?.slice(0, 8) ?? []}
+        trending={trending?.results?.slice(0, 8) ?? []}
+      />
+    </Suspense>
   );
 }

@@ -1,3 +1,4 @@
+import Loading from "@/app/loading";
 import { MediaTypeEnum } from "@/data/enums/media-type";
 import { MovieService } from "@/data/services/movie-service";
 import { TvShowService } from "@/data/services/tv-show-service";
@@ -37,7 +38,7 @@ export default async function DetailPage({ params }: Props) {
       notFound();
     }
     return (
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loading />}>
         <Detail
           id={id}
           mediaType={mediaType}

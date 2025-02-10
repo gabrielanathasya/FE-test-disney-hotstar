@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  gap: 32px;
+  padding: 32px 32px 32px 110px;
+  max-width: 100%;
+}
+
+.title {
+  font-weight: 600;
+  text-align: center;
+}

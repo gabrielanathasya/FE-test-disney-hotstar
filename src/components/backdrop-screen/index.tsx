@@ -7,22 +7,29 @@ import WatchNowButton from "@/components/watch-now-button";
 import WatchlistButton from "@/components/watchlist-button";
 import { MediaTypeEnum } from "@/data/enums/media-type";
 import { Movie, MovieDetail } from "@/types/movies";
-import { TVShowDetail } from "@/types/tv-shows";
+import { TvShow, TVShowDetail } from "@/types/tv-shows";
 import { Genre, MediaType } from "@/types/common";
 import { genres } from "@/data/consts/genres";
+import FeaturedCarousel from "@/components/featured-carousel";
 
 type Props = {
   mediaType: MediaType;
-  data: MovieDetail | TVShowDetail | Movie;
+  selectedData: any;
+  setSelectedData?: (value: any) => void;
+  data?: (TvShow | Movie)[];
+  isShowCarousel: boolean;
   isCurrentDataInWatchList: boolean;
   handleClickWatchlist: () => void;
 };
 
 export default function BackdropScreen({
   mediaType,
-  data,
+  selectedData,
+  setSelectedData,
   handleClickWatchlist,
   isCurrentDataInWatchList,
+  data,
+  isShowCarousel = false,
 }: Props) {
   return (
     <div className={styles.topSection}>
@@ -30,14 +37,14 @@ export default function BackdropScreen({
       <span className={styles.gradientBottom} />
       <div className={styles.backdropContainer}>
         <Image
-          src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${data.backdrop_path}`}
+          src={`${process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE_URL}${selectedData.backdrop_path}`}
           fill
           priority
           sizes="100vw"
           alt={
             mediaType === MediaTypeEnum.MOVIE
-              ? (data as MovieDetail).title
-              : (data as TVShowDetail).name
+              ? selectedData.title
+              : selectedData.name
           }
           className={styles.backdrop}
         />
@@ -45,38 +52,44 @@ export default function BackdropScreen({
       <div className={styles.infoSection}>
         <h1 className={styles.title}>
           {mediaType === MediaTypeEnum.MOVIE
-            ? (data as MovieDetail).title
-            : (data as TVShowDetail).name}
+            ? selectedData.title
+            : selectedData.name}
         </h1>
         <div className={styles.subInfo}>
           <p>
             {new Date(
               mediaType === MediaTypeEnum.MOVIE
-                ? (data as MovieDetail).release_date
-                : (data as TVShowDetail).last_air_date,
+                ? selectedData.release_date
+                : selectedData.first_air_date,
             ).getFullYear()}
           </p>
           <span className={styles.separator}>&#x2022;</span>
-          <p>{languages[data.original_language as keyof typeof languages]}</p>
+          <p>
+            {
+              languages[
+                selectedData.original_language as keyof typeof languages
+              ]
+            }
+          </p>
         </div>
-        <p className={styles.description}>{data.overview}</p>
+        <p className={styles.description}>{selectedData.overview}</p>
         <div className={`${styles.subInfo} ${styles.genres}`}>
-          {!!(data as MovieDetail).genres?.length
-            ? (data as MovieDetail).genres?.map((genre: Genre, i: number) => {
+          {!!selectedData.genres?.length
+            ? selectedData.genres?.map((genre: Genre, i: number) => {
                 return (
                   <span key={genre.id} className={styles.subInfo}>
                     <p>{genre.name}</p>
-                    {i !== (data as MovieDetail).genres?.length - 1 && (
+                    {i !== selectedData.genres?.length - 1 && (
                       <span className={styles.separator}>&#124;</span>
                     )}
                   </span>
                 );
               })
-            : (data as Movie).genre_ids?.map((genre: number, i: number) => {
+            : selectedData.genre_ids?.map((genre: number, i: number) => {
                 return (
                   <span key={genre} className={styles.subInfo}>
                     <p>{genres[genre as keyof typeof genres]}</p>
-                    {i !== (data as Movie).genre_ids.length - 1 && (
+                    {i !== selectedData.genre_ids.length - 1 && (
                       <span className={styles.separator}>&#124;</span>
                     )}
                   </span>
@@ -84,13 +97,24 @@ export default function BackdropScreen({
               })}
         </div>
         <div className={styles.buttonWrapper}>
-          <WatchNowButton />
+          <WatchNowButton variant="secondary" size="lg" />
           <WatchlistButton
             handleClickWatchlist={handleClickWatchlist}
             isInWatchlist={isCurrentDataInWatchList}
+            variant="secondary"
+            size="lg"
           />
         </div>
       </div>
+      {isShowCarousel && (
+        <div className={styles.carouselWrapper}>
+          <FeaturedCarousel
+            data={data}
+            selectedData={selectedData}
+            setSelectedData={setSelectedData ? setSelectedData : () => {}}
+          />
+        </div>
+      )}
     </div>
   );
 }

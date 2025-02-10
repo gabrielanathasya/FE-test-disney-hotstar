@@ -1,0 +1,107 @@
+.container {
+  position: absolute;
+  left: -25%;
+  top: -10%;
+  transition: all 0.2s ease-out;
+  z-index: 100;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.containerHide {
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+.containerShow {
+  visibility: visible;
+  opacity: 100;
+  transform: scale(1);
+}
+
+.popOver {
+  width: 286px;
+  background-color: #16181f;
+  box-shadow: 1px 31px 23px 1px rgba(0, 0, 0, 0.57);
+}
+
+.image {
+  height: 138px;
+  width: 286px;
+  position: relative;
+  border-radius: 12px 12px 0px 0px;
+}
+
+.gradientBottom {
+  z-index: 101;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 50px;
+  width: 100%;
+  background: #16181f;
+  background: linear-gradient(
+    to top,
+    rgb(15, 16, 20) 0%,
+    rgba(15, 16, 20, 0.98) 5%,
+    rgba(15, 16, 20, 0.95) 10%,
+    rgba(15, 16, 20, 0.9) 15%,
+    rgba(15, 16, 20, 0.85) 20%,
+    rgba(15, 16, 20, 0.8) 25%,
+    rgba(15, 16, 20, 0.75) 30%,
+    rgba(15, 16, 20, 0.7) 35%,
+    rgba(15, 16, 20, 0.65) 40%,
+    rgba(15, 16, 20, 0.6) 45%,
+    rgba(15, 16, 20, 0.55) 50%,
+    rgba(15, 16, 20, 0.45) 60%,
+    rgba(15, 16, 20, 0.35) 70%,
+    rgba(15, 16, 20, 0.25) 80%,
+    rgba(15, 16, 20, 0.15) 90%,
+    rgba(15, 16, 20, 0.05) 95%,
+    rgba(15, 16, 20, 0) 100%
+  );
+}
+
+.content {
+  display: grid;
+  gap: 16px;
+  padding: 20px 12px 12px 12px;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.subInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.label {
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.separator {
+  font-weight: 400;
+  color: #808080;
+}
+
+.description {
+  color: #8f98b2;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.5em;
+  line-height: 1.25rem;
+}

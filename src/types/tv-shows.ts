@@ -16,6 +16,12 @@ export type TvShow = {
   first_air_date: string;
   vote_average: number;
   media_type?: MediaType;
+  original_language: string;
+  genre_ids: number[];
+  origin_country: string;
+  popularity: number;
+  vote_count: number;
+  adult: boolean;
 };
 
 type Creator = {
